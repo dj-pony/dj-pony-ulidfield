@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "dj-pony.ulidfield"
+version = "0.1.0"
+description = "A ULID Field for Django that does all the work for you."
+authors = ["Samuel Bishop <sam@techdragon.io>"]
+packages = [
+    { include = "dj_pony" },
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.6"
+django = "^2.2"
+ulid-py = "^0.0.9"
+
+[tool.poetry.dev-dependencies]
+pylint = "^2.3"
+coverage = "^4.5"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
