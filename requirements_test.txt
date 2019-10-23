@@ -1,8 +1,11 @@
-coverage==4.4.1
+coverage==4.*,>=4.5.0
 mock>=1.0.1
 flake8>=2.1.0
-tox>=1.7.0
 codecov>=2.0.0
-
-
 # Additional test requirements go here
+dj-pony.django-docker-test-dbs>=0.1.0
+psycopg2==2.8.3
+django-environ==0.*,>=0.4.5
+pylint==2.*,>=2.3.0
+tox==3.*,>=3.14.0
+ulid-py==0.*,>=0.0.9

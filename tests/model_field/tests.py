@@ -1,5 +1,6 @@
 import json
 import ulid
+from time import sleep
 
 from django.core import exceptions, serializers
 from django.db import IntegrityError
@@ -186,13 +187,13 @@ class TestAsPrimaryKey(TestCase):
         self.assertEqual(r.ulid_fk, u2)
 
     def test_two_level_foreign_keys(self):
-        gc = ULIDGrandchild()
+        grandchild = ULIDGrandchild()
         # exercises ForeignKey.get_db_prep_value()
-        gc.save()
-        # print(dir(gc))
-        self.assertIsInstance(gc.ulidchild_ptr_id, ulid.ulid.ULID)
-        gc.refresh_from_db()
-        self.assertIsInstance(gc.ulidchild_ptr_id, ulid.ulid.ULID)
+        grandchild.save()
+        print(dir(grandchild))
+        self.assertIsInstance(grandchild.ulidchild_ptr.id, ulid.ulid.ULID)
+        grandchild.refresh_from_db()
+        self.assertIsInstance(grandchild.ulidchild_ptr.id, ulid.ulid.ULID)
 
 
 class TestAsPrimaryKeyTransactionTests(TransactionTestCase):
@@ -208,11 +209,18 @@ class TestAsPrimaryKeyTransactionTests(TransactionTestCase):
 
 class PrimaryKeyOrderingTests(TransactionTestCase):
     def test_ordering(self):
+        PrimaryKeyULIDModel.objects.all().delete()
         u1 = PrimaryKeyULIDModel.objects.create()
+        sleep_delay = 2
+        sleep(sleep_delay)
         u2 = PrimaryKeyULIDModel.objects.create()
+        sleep(sleep_delay)
         u3 = PrimaryKeyULIDModel.objects.create()
+        sleep(sleep_delay)
         u4 = PrimaryKeyULIDModel.objects.create()
+        sleep(sleep_delay)
         u5 = PrimaryKeyULIDModel.objects.create()
-        self.assertEqual(u1, PrimaryKeyULIDModel.objects.first())
-        self.assertEqual(u5, PrimaryKeyULIDModel.objects.last())
-        # self.assertEqual(u5, PrimaryKeyULIDModel.objects.latest())
+        first = PrimaryKeyULIDModel.objects.first()
+        last = PrimaryKeyULIDModel.objects.last()
+        self.assertEqual(u1, first)
+        self.assertEqual(u5, last)

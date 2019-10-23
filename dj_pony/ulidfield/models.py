@@ -57,7 +57,7 @@ class ULIDField(Field):
         if not isinstance(value, ulid.ulid.ULID):
             value = self.to_python(value)
         if connection.features.has_native_uuid_field:
-            return value
+            return value.uuid
         return value.str
 
     def get_prep_value(self, value):
