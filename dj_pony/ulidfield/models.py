@@ -1,13 +1,12 @@
 """
 """
-from django.db.models.fields import UUIDField
 from django.db.models.fields import Field
 from django.utils.translation import gettext_lazy as _
 from django.core import exceptions
 from django.db.utils import NotSupportedError
-from django import forms
 import ulid
 import copyreg
+from dj_pony.ulidfield import forms
 
 
 def pickle_ulid(original_ulid: ulid.ULID) -> tuple:
@@ -85,6 +84,6 @@ class ULIDField(Field):
 
     def formfield(self, **kwargs):
         return super().formfield(**{
-            'form_class': forms.UUIDField,
+            'form_class': forms.ULIDFormField,
             **kwargs,
         })
