@@ -84,6 +84,6 @@ class ULIDField(Field):
 
     def formfield(self, **kwargs):
         return super().formfield(**{
-            'form_class': forms.ULIDFormField,
+            'form_class': forms.ULIDField,
             **kwargs,
         })
