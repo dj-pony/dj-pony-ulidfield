@@ -2,14 +2,14 @@
 DJ Pony ULID Field
 =============================
 
-.. image:: https://badge.fury.io/py/dj-pony-ulidfield.svg
-    :target: https://badge.fury.io/py/dj-pony-ulidfield
+.. image:: https://badge.fury.io/py/dj-pony.ulidfield.svg
+    :target: https://badge.fury.io/py/dj-pony.ulidfield
 
-.. image:: https://travis-ci.org/techdragon/dj-pony-ulidfield.svg?branch=master
-    :target: https://travis-ci.org/techdragon/dj-pony-ulidfield
+.. image:: https://travis-ci.org/techdragon/dj-pony.ulidfield.svg?branch=master
+    :target: https://travis-ci.org/techdragon/dj-pony.ulidfield
 
-.. image:: https://codecov.io/gh/techdragon/dj-pony-ulidfield/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/techdragon/dj-pony-ulidfield
+.. image:: https://codecov.io/gh/techdragon/dj-pony.ulidfield/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/techdragon/dj-pony.ulidfield
 
 A ULID Field for Django that does all the work for you.
 
@@ -23,7 +23,7 @@ Quickstart
 
 Install DJ Pony ULID Field::
 
-    pip install dj-pony-ulidfield
+    pip install dj-pony.ulidfield
 
 Add it to your `INSTALLED_APPS`:
 
@@ -31,7 +31,7 @@ Add it to your `INSTALLED_APPS`:
 
     INSTALLED_APPS = (
         ...
-        'dj_pony_ulidfield.apps.DjPonyULIDFieldConfig',
+        'dj_pony.ulidfield.apps.DjPonyULIDFieldConfig',
         ...
     )
 
@@ -39,7 +39,7 @@ Add DJ Pony ULID Field's URL patterns:
 
 .. code-block:: python
 
-    from dj_pony_ulidfield import urls as dj_pony_ulidfield_urls
+    from dj_pony.ulidfield import urls as dj_pony_ulidfield_urls
 
 
     urlpatterns = [
