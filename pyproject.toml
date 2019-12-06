@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dj-pony.ulidfield"
-version = "0.3.1"
+version = "0.3.3"
 description = "A ULID Field for Django that does all the work for you."
 authors = ["Samuel Bishop <sam@techdragon.io>"]
 packages = [
