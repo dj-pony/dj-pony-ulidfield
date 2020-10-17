@@ -5,6 +5,7 @@ codecov>=2.0.0
 # Additional test requirements go here
 dj-pony.django-docker-test-dbs>=0.1.0
 psycopg2==2.8.3
+mysqlclient>=2.0.0
 django-environ==0.*,>=0.4.5
 pylint==2.*,>=2.3.0
 tox==3.*,>=3.14.0

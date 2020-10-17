@@ -13,6 +13,7 @@ USE_TZ = True
 env = environ.Env()
 POSTGRESQL_TEST = env.bool("POSTGRESQL_TEST", default=False)
 SQLITE_TEST = env.bool("SQLITE_TEST", default=False)
+MYSQL_TEST = env.bool("MYSQL_TEST", default=False)
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -33,6 +34,16 @@ elif POSTGRESQL_TEST:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
+            "NAME": "service_core_test",
+        }
+    }
+    DATABASES = run_testing_database(DATABASES)
+    print(DATABASES)
+elif MYSQL_TEST:
+    from dj_pony.django_docker_test_dbs.docker_db_in_memory import run_testing_database
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
             "NAME": "service_core_test",
         }
     }
