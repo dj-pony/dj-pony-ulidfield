@@ -42,7 +42,7 @@ class ULIDField(Field):
         elif connection.settings_dict['ENGINE'] == 'django.db.backends.postgresql':
             return 'uuid'
         elif connection.settings_dict['ENGINE'] == 'django.db.backends.mysql':
-            return 'char(32)'
+            return 'binary(16)'
         elif connection.settings_dict['ENGINE'] == 'django.db.backends.oracle':
             return 'VARCHAR2(32)'
         else:
@@ -57,6 +57,8 @@ class ULIDField(Field):
             value = self.to_python(value)
         if connection.features.has_native_uuid_field:
             return value.uuid
+        elif connection.vendor == 'mysql':
+            return value.bytes
         return value.str
 
     def get_prep_value(self, value):
@@ -77,6 +79,7 @@ class ULIDField(Field):
                 )
         return value
 
+    # noinspection PyMethodMayBeStatic
     def from_db_value(self, value, expression, connection):
         if value is None:
             return value
