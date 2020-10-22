@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dj-pony.ulidfield"
-version = "0.4.2"
+version = "0.5.0"
 description = "A ULID Field for Django that does all the work for you."
 authors = ["Samuel Bishop <sam@techdragon.io>"]
 packages = [
@@ -17,7 +17,7 @@ ulid-py = "^1.0.0"
 pylint = "^2.3"
 coverage = "^4.5"
 django-environ = "^0.4.5"
-"dj-pony.django-docker-test-dbs" = "^0.1.0"
+"dj-pony.django-docker-test-dbs" = "^0.2.0"
 tox = "^3.14.0"
 django-pytest = "^0.2.0"
 

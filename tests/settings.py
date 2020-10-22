@@ -45,6 +45,7 @@ elif MYSQL_TEST:
         "default": {
             "ENGINE": "django.db.backends.mysql",
             "NAME": "service_core_test",
+            "HOST": "127.0.0.1",
         }
     }
     DATABASES = run_testing_database(DATABASES)
