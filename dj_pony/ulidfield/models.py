@@ -35,11 +35,14 @@ class ULIDField(Field):
             del kwargs['max_length']
         return name, path, args, kwargs
 
+    # TODO: This should probably use the feature detection if possible...
     def db_type(self, connection):
         # I've just copied the same column types Django uses for UUIDs.
         if connection.settings_dict['ENGINE'] == 'django.db.backends.sqlite3':
             return 'char(32)'  # A 16 byte BLOB might be better...
         elif connection.settings_dict['ENGINE'] == 'django.db.backends.postgresql':
+            return 'uuid'
+        elif connection.settings_dict['ENGINE'] == 'django_cockroachdb':
             return 'uuid'
         elif connection.settings_dict['ENGINE'] == 'django.db.backends.mysql':
             return 'binary(16)'
