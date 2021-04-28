@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.core import exceptions
 from django.db.utils import NotSupportedError
 import ulid
+from ulid.api.default import new as ulid_api_default_new
 import copyreg
 from dj_pony.ulidfield import forms
 
@@ -16,6 +17,10 @@ def pickle_ulid(original_ulid: ulid.ULID) -> tuple:
 
 # Register our pickle function!
 copyreg.pickle(ulid.ULID, pickle_ulid)
+
+
+def new_default_ulid():
+    return ulid_api_default_new()
 
 
 class ULIDField(Field):
