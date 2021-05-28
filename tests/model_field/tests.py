@@ -15,6 +15,7 @@ from tests.model_field.models import (
     RelatedToULIDModel,
     ULIDGrandchild,
     ULIDModel,
+    ULIDPrimaryKeyModel
 )
 
 
@@ -194,6 +195,11 @@ class TestAsPrimaryKey(TestCase):
         self.assertIsInstance(grandchild.ulidchild_ptr.id, ulid.ulid.ULID)
         grandchild.refresh_from_db()
         self.assertIsInstance(grandchild.ulidchild_ptr.id, ulid.ulid.ULID)
+
+    def test_ulidprimarykeymodel_creation(self):
+        ULIDPrimaryKeyModel.objects.create()
+        loaded = ULIDPrimaryKeyModel.objects.get()
+        self.assertIsInstance(loaded.pk, ulid.ulid.ULID)
 
 
 class TestAsPrimaryKeyTransactionTests(TransactionTestCase):

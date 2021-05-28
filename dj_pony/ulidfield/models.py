@@ -98,3 +98,25 @@ class ULIDField(Field):
             'form_class': forms.ULIDField,
             **kwargs,
         })
+
+
+class ULIDPrimaryKey(ULIDField):
+    """Pre-Configured for use as a default primary key."""
+
+    def __init__(
+        self,
+        primary_key=True,
+        unique=True,
+        default=new_default_ulid,
+        verbose_name="ID",
+        help_text="ULID Primary Key",
+        **kwargs
+    ):
+        super(ULIDPrimaryKey, self).__init__(
+            primary_key=primary_key,
+            unique=unique,
+            default=default,
+            verbose_name=verbose_name,
+            help_text=help_text,
+            **kwargs
+        )

@@ -3,6 +3,7 @@ import ulid
 
 from django.db import models
 from dj_pony.ulidfield.models import ULIDField
+from dj_pony.ulidfield.models import ULIDPrimaryKey
 
 
 class ULIDModel(models.Model):
@@ -28,3 +29,6 @@ class ULIDChild(PrimaryKeyULIDModel):
 class ULIDGrandchild(ULIDChild):
     pass
 
+
+class ULIDPrimaryKeyModel(models.Model):
+    id = ULIDPrimaryKey()
